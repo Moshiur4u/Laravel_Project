@@ -18,6 +18,10 @@ Route::get('/', function () {
 // });
 
 
+// Routing Perametter Pass in url
+route::get("user/{id}",function($id){
+return "User,$id";
+})->where('id','[0-9]+');
 
 
 // require __DIR__.'/auth.php';
