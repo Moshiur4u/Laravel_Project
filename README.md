@@ -1,5 +1,10 @@
 <!-- Artisan Command -->
-make:cache-table   [cache:table] Create a migration for the cache database table
+
+# phpartisanCommand
+
+```bash
+  make:cache-table           [cache:table]
+ Create a migration for the cache database table
   make:cast                 Create a new custom Eloquent cast class
   make:channel              Create a new channel class
   make:class                Create a new class
@@ -36,3 +41,4 @@ make:cache-table   [cache:table] Create a migration for the cache database table
   make:test                 Create a new test class
   make:trait                Create a new trait
   make:view                 Create a new view
+```
