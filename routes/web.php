@@ -1,7 +1,10 @@
 <?php
 
 // use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -48,4 +51,19 @@ Route::get('/', function () {
 //     return "User :$slug PIN :$id";
 // })->where('slug','[A-Za-z]+');
 
+// রাউট প্রিফিক্স হলও একাধি  রাউটের গ্রুপ
+// route::prefix('admin')->group(function(){
+//     route::get('/dashboard',[AdminController::class,'index' ])->name('admin.index');
+//     route::get('/profile',[AdminController::class,'userProfile' ])->name('user.profile');
+//     route::get('/aprovals',[AdminController::class,'aprove' ])->name('admin.aprove');
+// });
+
+
+// রাউটে  মিডিলওয়্যারের মাধ্যমে আথিন্টিকেশন করা হয়।
+// যেমন কে কি আক্সেস পারে তাই মিডিলওয়্যারের রাউটের মাধ্যমে করা যায়।
+// route::Middleware('auth')->group(function(){
+//     route::get('/dashboard',[AdminController::class,'index' ])->name('admin.index');
+//     route::get('/profile',[AdminController::class,'userProfile' ])->name('user.profile');
+//     route::get('/aprovals',[AdminController::class,'aprove' ])->name('admin.aprove');
+// });
 // require __DIR__.'/auth.php';
