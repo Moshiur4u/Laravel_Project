@@ -66,4 +66,12 @@ Route::get('/', function () {
 //     route::get('/profile',[AdminController::class,'userProfile' ])->name('user.profile');
 //     route::get('/aprovals',[AdminController::class,'aprove' ])->name('admin.aprove');
 // });
+
+
+// রাউট ও কন্ট্রলারের মধ্যে কানেকশন
+
+route::get("/home",[AdminController::class,'index'])->name('Home');
+
+
+
 // require __DIR__.'/auth.php';
