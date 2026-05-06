@@ -70,8 +70,15 @@ Route::get('/', function () {
 
 // রাউট ও কন্ট্রলারের মধ্যে কানেকশন
 
-route::get("/home",[AdminController::class,'index'])->name('Home');
+// route::get("/home",[AdminController::class,'index'])->name('Home');
 
+// আসসেটিয়েভ এয়রে ব্যবহার।
+
+Route::get('/',function(){
+    return view ('home',[
+        'title'=>'HomePage',
+    ]);
+});
 
 
 // require __DIR__.'/auth.php';
