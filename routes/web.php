@@ -1,10 +1,10 @@
 <?php
 
 // use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
-use Illuminate\Routing\Controllers\Middleware;
+// use App\Http\Controllers\AdminController;
+// use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\Framework\Attributes\Group;
+// use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/', function () {
     // return view('welcome');
