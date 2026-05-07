@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রেস্টুরেন্ট ম্যানেজমেন্ট - ডাটাবেস কানেকশন ডায়াগ্রাম</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .diagram-container {
+            background: #f8f9fe;
+            border-radius: 15px;
+            padding: 30px 20px;
+            overflow-x: auto;
+        }
+
+        .diagram {
+            display: inline-block;
+            min-width: 1200px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .sub {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .table-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 250px;
+            border-top: 5px solid #e53e3e;
+            transition: transform 0.2s;
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .table-header {
+            background: #c53030;
+            color: white;
+            padding: 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .table-body {
+            padding: 10px;
+        }
+
+        .field {
+            padding: 6px 8px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        .pk {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .fk {
+            color: #3182ce;
+            font-style: italic;
+        }
+
+        .relation-section {
+            margin-top: 40px;
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .relation-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c53030;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .relation-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 12px;
+        }
+
+        .relation-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .arrow {
+            font-size: 16px;
+            margin: 0 8px;
+            color: #dd6b20;
+        }
+
+        button {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #c53030;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .connection-diagram {
+            margin: 30px 0;
+            text-align: center;
+            background: #fef5e7;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .connection-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .flow-box {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="diagram-container" id="diagramContainer">
+        <div class="diagram" id="diagramToCapture">
+            <h1>🍽️ রেস্টুরেন্ট ম্যানেজমেন্ট সিস্টেম</h1>
+            <div class="sub">ডাটাবেস সংযোগ চিত্র (ER Diagram)</div>
+
+            <div class="table-grid">
+                <!-- Users -->
+                <div class="table-card">
+                    <div class="table-header">👤 Users</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 user_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">email</div>
+                        <div class="field">phone</div>
+                        <div class="field">role (admin/staff)</div>
+                        <div class="field">password</div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="table-card">
+                    <div class="table-header">📂 Categories</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 category_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">description</div>
+                    </div>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="table-card">
+                    <div class="table-header">🍕 Menu_Items</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 item_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 category_id (FK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">description</div>
+                        <div class="field">price</div>
+                        <div class="field">available</div>
+                    </div>
+                </div>
+
+                <!-- Customers -->
+                <div class="table-card">
+                    <div class="table-header">🧑‍🍳 Customers</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 customer_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">phone</div>
+                        <div class="field">email</div>
+                        <div class="field">address</div>
+                    </div>
+                </div>
+
+                <!-- Tables -->
+                <div class="table-card">
+                    <div class="table-header">🪑 Tables</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 table_id (PK)</span></div>
+                        <div class="field">table_number</div>
+                        <div class="field">capacity</div>
+                        <div class="field">status (available/occupied)</div>
+                    </div>
+                </div>
+
+                <!-- Orders -->
+                <div class="table-card">
+                    <div class="table-header">📝 Orders</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 order_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 customer_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 table_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 user_id (FK)</span></div>
+                        <div class="field">order_date</div>
+                        <div class="field">order_type (dine-in/takeaway)</div>
+                        <div class="field">status (pending/completed)</div>
+                        <div class="field">total_amount</div>
+                    </div>
+                </div>
+
+                <!-- Order_Items -->
+                <div class="table-card">
+                    <div class="table-header">🛒 Order_Items</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 order_item_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 order_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 item_id (FK)</span></div>
+                        <div class="field">quantity</div>
+                        <div class="field">unit_price</div>
+                        <div class="field">subtotal</div>
+                    </div>
+                </div>
+
+                <!-- Payments -->
+                <div class="table-card">
+                    <div class="table-header">💰 Payments</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 payment_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 order_id (FK)</span></div>
+                        <div class="field">payment_date</div>
+                        <div class="field">amount</div>
+                        <div class="field">method (cash/card/mobile)</div>
+                        <div class="field">status</div>
+                    </div>
+                </div>
+
+                <!-- Reservations -->
+                <div class="table-card">
+                    <div class="table-header">📅 Reservations</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 reservation_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 customer_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 table_id (FK)</span></div>
+                        <div class="field">reservation_date</div>
+                        <div class="field">time_slot</div>
+                        <div class="field">number_of_guests</div>
+                        <div class="field">status</div>
+                    </div>
+                </div>
+
+                <!-- Inventory -->
+                <div class="table-card">
+                    <div class="table-header">📦 Inventory</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 ingredient_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">quantity</div>
+                        <div class="field">unit</div>
+                        <div class="field">reorder_level</div>
+                    </div>
+                </div>
+
+                <!-- Recipe -->
+                <div class="table-card">
+                    <div class="table-header">📖 Recipe</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 recipe_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 item_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 ingredient_id (FK)</span></div>
+                        <div class="field">quantity_needed</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Flow Diagram -->
+            <div class="connection-diagram">
+                <div class="connection-title">🔗 ডাটাবেস কানেকশন ফ্লো (Relationship Map)</div>
+                <div class="flow">
+                    <span class="flow-box">Users</span> <span>⬇️</span>
+                    <span class="flow-box">Orders</span> <span>⬇️</span>
+                    <span class="flow-box">Order_Items</span> <span>⬇️</span>
+                    <span class="flow-box">Menu_Items</span>
+                </div>
+                <div class="flow" style="margin-top: 10px;">
+                    <span class="flow-box">Customers</span> <span>⬇️</span>
+                    <span class="flow-box">Orders</span> <span>➡️</span>
+                    <span class="flow-box">Payments</span>
+                </div>
+                <div class="flow" style="margin-top: 10px;">
+                    <span class="flow-box">Tables</span> <span>⬇️</span>
+                    <span class="flow-box">Orders</span> <span style="margin-left:10px">|</span>
+                    <span class="flow-box">Reservations</span>
+                </div>
+                <div class="flow" style="margin-top: 10px;">
+                    <span class="flow-box">Categories</span> <span>⬇️</span>
+                    <span class="flow-box">Menu_Items</span> <span>⬇️</span>
+                    <span class="flow-box">Recipe</span> <span>⬇️</span>
+                    <span class="flow-box">Inventory</span>
+                </div>
+            </div>
+
+            <!-- Relationship Summary -->
+            <div class="relation-section">
+                <div class="relation-title">📌 ডাটাবেস রিলেশনশিপ সমূহ (Foreign Key Connections)</div>
+                <div class="relation-list">
+                    <div class="relation-item">Categories ⭢ Menu_Items <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Users ⭢ Orders <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Customers ⭢ Orders <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Customers ⭢ Reservations <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Tables ⭢ Orders <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Tables ⭢ Reservations <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Orders ⭢ Order_Items <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Orders ⭢ Payments <span class="arrow">(1 : One/Many)</span></div>
+                    <div class="relation-item">Menu_Items ⭢ Order_Items <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Menu_Items ⭢ Recipe <span class="arrow">(1 : Many)</span></div>
+                    <div class="relation-item">Inventory ⭢ Recipe <span class="arrow">(1 : Many)</span></div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; font-size: 13px; background: #fed7d7; padding: 8px; border-radius: 20px;">
+                    ✅ PK = Primary Key &nbsp;&nbsp;|&nbsp;&nbsp; 🔗 FK = Foreign Key (টেবিলের মধ্যে সংযোগ)
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="downloadBtn">📸 ডায়াগ্রামটি ছবি হিসেবে ডাউনলোড করুন (PNG)</button>
+    <div class="footer">বাটনে ক্লিক করলেই রেস্টুরেন্ট ম্যানেজমেন্ট ডাটাবেস কানেকশনের ছবি পেয়ে যাবেন</div>
+</div>
+
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        const element = document.getElementById('diagramToCapture');
+        html2canvas(element, {
+            scale: 2,
+            backgroundColor: '#ffffff',
+            logging: false,
+            useCORS: true
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'restaurant_database_diagram.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }).catch(error => {
+            alert('ছবি তৈরি করতে সমস্যা হয়েছে, আবার চেষ্টা করুন।');
+            console.error(error);
+        });
+    });
+</script>
+</body>
+</html>

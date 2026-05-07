@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফার্মাসি ম্যানেজমেন্ট - ডাটাবেস কানেকশন -ডায়াগ্রাম</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .diagram-container {
+            background: #f8f9fe;
+            border-radius: 15px;
+            padding: 30px 20px;
+            overflow-x: auto;
+        }
+
+        canvas, .diagram-canvas {
+            display: block;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .diagram {
+            display: inline-block;
+            min-width: 1100px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .sub {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .table-grid {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 240px;
+            border-top: 5px solid #4299e1;
+            transition: transform 0.2s;
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .table-header {
+            background: #2b6cb0;
+            color: white;
+            padding: 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .table-body {
+            padding: 10px;
+        }
+
+        .field {
+            padding: 6px 8px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .pk {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .fk {
+            color: #3182ce;
+            font-style: italic;
+        }
+
+        .relationship-line {
+            text-align: center;
+            font-size: 20px;
+            color: #38a169;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .relation-section {
+            margin-top: 40px;
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .relation-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .relation-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 12px;
+        }
+
+        .relation-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .arrow {
+            font-size: 18px;
+            margin: 0 8px;
+            color: #dd6b20;
+        }
+
+        button {
+            background: #38a169;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #2f855a;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="diagram-container" id="diagramContainer">
+        <div class="diagram" id="diagramToCapture">
+            <h1>💊 ফার্মাসি ম্যানেজমেন্ট সিস্টেম</h1>
+            <div class="sub">ডাটাবেস সংযোগ চিত্র (ER Diagram)</div>
+
+            <div class="table-grid">
+                <!-- Users -->
+                <div class="table-card">
+                    <div class="table-header">👤 Users</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 user_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">email</div>
+                        <div class="field">role</div>
+                        <div class="field">password</div>
+                    </div>
+                </div>
+
+                <!-- Suppliers -->
+                <div class="table-card">
+                    <div class="table-header">🏭 Suppliers</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 supplier_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">phone</div>
+                        <div class="field">address</div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="table-card">
+                    <div class="table-header">📂 Categories</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 category_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">description</div>
+                    </div>
+                </div>
+
+                <!-- Medicines -->
+                <div class="table-card">
+                    <div class="table-header">💊 Medicines</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 medicine_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 supplier_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 category_id (FK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">generic_name</div>
+                        <div class="field">price</div>
+                        <div class="field">stock_quantity</div>
+                    </div>
+                </div>
+
+                <!-- Customers -->
+                <div class="table-card">
+                    <div class="table-header">🧑‍🤝‍🧑 Customers</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 customer_id (PK)</span></div>
+                        <div class="field">name</div>
+                        <div class="field">phone</div>
+                        <div class="field">address</div>
+                    </div>
+                </div>
+
+                <!-- Sales -->
+                <div class="table-card">
+                    <div class="table-header">💰 Sales</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 sale_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 user_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 customer_id (FK)</span></div>
+                        <div class="field">sale_date</div>
+                        <div class="field">total_amount</div>
+                    </div>
+                </div>
+
+                <!-- Sale_Items -->
+                <div class="table-card">
+                    <div class="table-header">🛒 Sale_Items</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 sale_item_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 sale_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 medicine_id (FK)</span></div>
+                        <div class="field">quantity</div>
+                        <div class="field">unit_price</div>
+                    </div>
+                </div>
+
+                <!-- Inventory -->
+                <div class="table-card">
+                    <div class="table-header">📦 Inventory</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 inventory_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 medicine_id (FK)</span></div>
+                        <div class="field">batch_no</div>
+                        <div class="field">quantity</div>
+                        <div class="field">expiry_date</div>
+                    </div>
+                </div>
+
+                <!-- Purchases -->
+                <div class="table-card">
+                    <div class="table-header">📥 Purchases</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 purchase_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 supplier_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 user_id (FK)</span></div>
+                        <div class="field">purchase_date</div>
+                        <div class="field">total_cost</div>
+                    </div>
+                </div>
+
+                <!-- Purchase_Items -->
+                <div class="table-card">
+                    <div class="table-header">📋 Purchase_Items</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 purchase_item_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 purchase_id (FK)</span></div>
+                        <div class="field"><span class="fk">🔗 medicine_id (FK)</span></div>
+                        <div class="field">quantity</div>
+                        <div class="field">cost_price</div>
+                    </div>
+                </div>
+
+                <!-- Prescriptions -->
+                <div class="table-card">
+                    <div class="table-header">📄 Prescriptions</div>
+                    <div class="table-body">
+                        <div class="field"><span class="pk">🔑 prescription_id (PK)</span></div>
+                        <div class="field"><span class="fk">🔗 customer_id (FK)</span></div>
+                        <div class="field">doctor_name</div>
+                        <div class="field">issue_date</div>
+                        <div class="field">image_path</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relationship Summary -->
+            <div class="relation-section">
+                <div class="relation-title">🔗 ডাটাবেস কানেকশন সমূহ (Relationships)</div>
+                <div class="relation-list">
+                    <div class="relation-item">Suppliers ⭢ Medicines <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Categories ⭢ Medicines <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Users ⭢ Sales <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Customers ⭢ Sales <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Sales ⭢ Sale_Items <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Medicines ⭢ Sale_Items <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Medicines ⭢ Inventory <span class="arrow">➖➖➖ (1 : 1 / 1 : Many)</span></div>
+                    <div class="relation-item">Suppliers ⭢ Purchases <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Purchases ⭢ Purchase_Items <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Medicines ⭢ Purchase_Items <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                    <div class="relation-item">Customers ⭢ Prescriptions <span class="arrow">➖➖➖ (1 : Many)</span></div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; font-size: 13px; background: #bee3f8; padding: 8px; border-radius: 20px;">
+                    ✅ PK = Primary Key &nbsp;&nbsp;|&nbsp;&nbsp; 🔗 FK = Foreign Key (সংযোগ)
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="downloadBtn">📸 ডায়াগ্রামটি ছবি হিসেবে ডাউনলোড করুন</button>
+    <div class="footer">উপরের বাটনে ক্লিক করলেই পাবেন ফার্মাসি ম্যানেজমেন্ট ডাটাবেস কানেকশনের ছবি (PNG)</div>
+</div>
+
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        const element = document.getElementById('diagramToCapture');
+        // Use html2canvas to capture the diagram
+        html2canvas(element, {
+            scale: 2,          // High resolution
+            backgroundColor: '#ffffff',
+            logging: false,
+            useCORS: true
+        }).then(canvas => {
+            // Create download link
+            const link = document.createElement('a');
+            link.download = 'pharmacy_database_diagram.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }).catch(error => {
+            alert('ছবি তৈরি করতে সমস্যা হয়েছে, আবার চেষ্টা করুন।');
+            console.error(error);
+        });
+    });
+</script>
+</body>
+</html>
