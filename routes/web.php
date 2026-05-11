@@ -1,10 +1,10 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
-// use App\Http\Controllers\AdminController;
-// use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
-// use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -74,11 +74,11 @@ Route::get('/', function () {
 
 // আসসেটিয়েভ এয়রে ব্যবহার।
 
-Route::get('/',function(){
-    return view ('home',[
-        'title'=>'HomePage',
-    ]);
-});
+// Route::get('/',function(){
+//     return view ('home',[
+//         'title'=>'HomePage',
+//     ]);
+// });
 
 
 // require __DIR__.'/auth.php';
