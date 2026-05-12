@@ -1,14 +1,16 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
-// use App\Http\Controllers\AdminController;
-// use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SocialiteController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
-// use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Group;
 
-Route::get('/', function () {
-    // return view('welcome');
+Route::get('/login', function () {
+    return view('login');
 });
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -74,11 +76,17 @@ Route::get('/', function () {
 
 // আসসেটিয়েভ এয়রে ব্যবহার।
 
-Route::get('/',function(){
-    return view ('home',[
-        'title'=>'HomePage',
-    ]);
-});
+// Route::get('/',function(){
+//     return view ('home',[
+//         'title'=>'HomePage',
+//     ]);
+// });
 
+// Google-এ পাঠানো
+Route::get('/auth/google', [SocialiteController::class, 'redirectToGoogle'])
+     ->name('auth.google');
 
+// Google থেকে ফেরার পর (Callback)
+Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])
+     ->name('auth.google.callback');
 // require __DIR__.'/auth.php';
