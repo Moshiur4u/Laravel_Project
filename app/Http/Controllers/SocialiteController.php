@@ -17,9 +17,8 @@ class SocialiteController extends Controller
   public function handleGoogleCallback() {
     try {
       // Google থেকে user info আনা
-      $googleUser = Socialite::driver('google')
-                       ->Statless()->user();
-
+      $googleUser = Socialite::driver('google')->Statless()->user();
+        dd();
       // DB-তে খোঁজা বা নতুন তৈরি
       $user = User::updateOrCreate(
         ['google_id' => $googleUser->id],
