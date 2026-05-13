@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name("login");
 
 
 // Route::get('/dashboard', function () {
