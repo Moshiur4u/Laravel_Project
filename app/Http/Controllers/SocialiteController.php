@@ -35,7 +35,5 @@ class SocialiteController extends Controller
       Auth::login($user, true);
 
       return view('dashboard.dashboard');
-
-
   }
 }
