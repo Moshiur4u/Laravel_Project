@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('empolyee_name');
             $table->string('designation');
             $table->float('phone');
-            $table->string('guardian_name');
+            $table->string('photo')->nullable();
             $table->text('address');
+            $table->string('guardian_name')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
