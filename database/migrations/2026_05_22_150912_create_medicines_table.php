@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->double('cost_price');
+            $table->double('price');
+            $table->string('image')->nullable();
+            $table->string('supplier');
             $table->timestamps();
         });
     }
