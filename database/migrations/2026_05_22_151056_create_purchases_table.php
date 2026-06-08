@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('admin_id')->nullable();
+            $table->foreignId('supplier_id');
             $table->foreignId('user_id');
-            $table->string('challan_no')->nullable();
-            $table->date('date');
+            $table->date('purchase_date');
+            $table->double('total_cost');
             $table->timestamps();
         });
     }
