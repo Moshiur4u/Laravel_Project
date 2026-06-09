@@ -19,6 +19,7 @@
     <!-- Bootstrap CSS -->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/bootstrap-extended.css')}}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{asset('assets/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
@@ -29,7 +30,6 @@
 
     <!--Datatable -->
     <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.2.2/r-3.0.3/datatables.min.css" rel="stylesheet">
-    <link href="<href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.2.2/r-3.0.3/datatables.min.js"></script>
     <title>PMS</title>
 </head>
@@ -62,72 +62,87 @@
                 <li class="menu-label">Regural Operation</li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-radio-cart'></i></div>
+                        <div class="parent-icon"><i class='bx bx-home-alt'></i></div>
                         <div class="menu-title">Sales</div>
                     </a>
                     <ul>
                         <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>All Category</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>Create Category</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="bx bx-category"></i></div>
-                        <div class="menu-title">Category</div>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>All Category</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>Create Category</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-cart'></i>
-                        </div>
-                        <div class="menu-title">Product</div>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>All Product</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>Create Product</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                        </div>
-                        <div class="menu-title">Users</div>
-                    </a>
-                    <ul>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>All Users</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>Create User</a>
+                            <a href="javascript:;"><i class='bx bx-plus-medical'></i>Create Sale</a>
                         </li>
 
                     </ul>
                 </li>
                 <li class="menu-label">Managerial Operations</li>
+
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="bx bx-customize "></i></div>
+                        <div class="menu-title">Category</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="javascript:;"><i class='bx bx-food-menu'></i>All Category</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;"><i class=' bx bx-plus-medical'></i>Create Category</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bxl-product-hunt '></i>
+                        </div>
+                        <div class="menu-title">Product</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="javascript:;"><i class='bx bx-food-menu'></i>All Product</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;"><i class='bx bx-plus-medical'></i>Create Product</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                        </div>
+                        <div class="menu-title">Customers</div>
+                    </a>
+                    <ul>
+
+                        <li>
+                            <a href="javascript:;"><i class=' bx bx-id-card'></i>All Customer</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;"><i class='bx bx-user-plus '></i>Create Customer</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu-label">Administration operations</li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bxs-user-pin "></i>
+                        </div>
+                        <div class="menu-title">Empolyee</div>
+                    </a>
+                    <ul>
+
+                        <li>
+                            <a href="javascript:;"><i class=' bx bx-id-card'></i>All Empolyee</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;"><i class='bx bx-user-plus '></i>Create Empolyee</a>
+                        </li>
+
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -144,26 +159,7 @@
                         </li>
                     </ul>
                 </li>
-
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                        </div>
-                        <div class="menu-title">Users</div>
-                    </a>
-                    <ul>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>All Users</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"><i class='bx bx-radio-circle'></i>Create User</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="menu-label">Forms & Tables</li>
+                <li class="menu-label">Reports</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
