@@ -1,6 +1,6 @@
 @extends('dashboard.dashboardHeader')
-@include('dashboard.dashboardFooter')
-@section()
+@extends('dashboard.dashboardFooter')
+@section('contain')
 <body>
     <!--wrapper-->
     <div class="wrapper">

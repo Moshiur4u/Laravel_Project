@@ -730,15 +730,15 @@ form select.error:focus {
 }
 
 .radius-30 {
-    border-radius: 30px;
+    border-radius: 40px;
 }
 
 .radius-10 {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .radius-15 {
-    border-radius: 15px;
+    border-radius: 25px;
 }
 
 .row.row-group > div {
