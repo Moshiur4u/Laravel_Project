@@ -16,10 +16,10 @@ return new class extends Migration
             $table->bigInteger('pin');
             $table->string('empolyee_name');
             $table->string('designation');
-            $table->float('phone');
-            $table->string('photo')->nullable();
+            $table->string('phone');
             $table->text('address');
             $table->string('guardian_name')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

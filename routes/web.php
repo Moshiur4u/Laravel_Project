@@ -15,8 +15,17 @@ use PHPUnit\Framework\Attributes\Group;
 // Route::get('/dashboard', function () {
 //     return view('dashboard-blank');
 // });
-Route::get('/dashboard', function () {
+Route::get('/Employee', function () {
     return view('Employee/addEmpolyee');
+});
+Route::get('/editEmpolyee', function () {
+    return view('Employee/editEmpolyee');
+});
+Route::get('/listEmpolyee', function () {
+    return view('Employee/empolyeeList');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 
