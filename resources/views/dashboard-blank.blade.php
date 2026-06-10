@@ -594,7 +594,15 @@
         </header>
 
         <!--end header -->
-
+         <!--start page wrapper -->
+        <div class="page-wrapper">
+            <div class="page-content">
+                <!-- start-content -->
+                 @yield('content')
+                <!-- end-content -->
+            </div>
+        </div>
+        <!--end page wrapper -->
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->

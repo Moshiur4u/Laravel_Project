@@ -12,12 +12,12 @@ use PHPUnit\Framework\Attributes\Group;
 // })->name("login");
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard-blank');
-});
 // Route::get('/dashboard', function () {
-//     return view('dashboard/dashboard');
+//     return view('dashboard-blank');
 // });
+Route::get('/dashboard', function () {
+    return view('Employee/addEmpolyee');
+});
 
 
 // ->middleware(['auth', 'verified'])->name('dashboard');
