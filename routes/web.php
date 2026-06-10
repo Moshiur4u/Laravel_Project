@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard-blank');
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard/dashboard');
