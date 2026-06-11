@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpolyeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SocialiteController;
@@ -11,22 +12,41 @@ use PHPUnit\Framework\Attributes\Group;
 //     return view('login');
 // })->name("login");
 
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard-blank');
-// });
-Route::get('/Employee', function () {
-    return view('Employee/addEmpolyee');
+// DashboardRoute Strat
+Route::get('/dashboard', function () {
+    return view('dashboard-blank');
 });
+
+// Empolyee Route Start
+route::get('/add/empolyee',[EmpolyeeController::class, 'add_empolyee'])->name('addEmpolyee');
+
+// Route::put('/Employee', function () {
+//     return view('Employee/addEmpolyee');
+// })->put('addEmpolyee');
 Route::get('/editEmpolyee', function () {
     return view('Employee/editEmpolyee');
 });
 Route::get('/listEmpolyee', function () {
     return view('Employee/empolyeeList');
-});
-Route::get('/dashboard', function () {
+})->name('empolyeeList');
+
+// Sales Route Start
+
+// Categories Route Start
+
+// Products Route Start
+
+// Customers Route Start
+
+// Roll and Permission Route Start
+
+// StoreReports Route Start
+
+// SalesReports Route Start
+
+Route::get('/index', function () {
     return view('dashboard');
-});
+})->name('dashboard-index');
 
 
 // ->middleware(['auth', 'verified'])->name('dashboard');

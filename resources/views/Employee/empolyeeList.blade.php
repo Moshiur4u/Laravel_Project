@@ -1,5 +1,4 @@
-@extends('dashboard-blank');
-{{-- <title>Add Empolyee</title> --}}
+@extends('dashboard-blank')
 @section('content')
     <div class="card radius-10">
         <div class="card-header">

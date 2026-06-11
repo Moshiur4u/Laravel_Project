@@ -1,37 +1,7 @@
+@extends('dashboardHeader')
+@extends('dashboardFooter')
 <!doctype html>
 <html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-
-    <link rel="icon" href="{{asset('assets/images/favicon-32x32.png')}}" type="image/png" />
-    <!--plugins-->
-    <link href="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
-    <!-- loader-->
-    <link href="{{asset('assets/css/pace.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('assets/js/pace.min.js')}}"></script>
-    <!-- Bootstrap CSS -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/bootstrap-extended.css')}}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="{{asset('assets/css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
-    <!-- Theme Style CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/dark-theme.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/semi-dark.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/header-colors.css')}}" />
-
-    <!--Datatable -->
-    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.2.2/r-3.0.3/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.2.2/r-3.0.3/datatables.min.js"></script>
-    <title>PMS</title>
-</head>
 
 <body>
     <!--wrapper-->
@@ -40,7 +10,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
+                    <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">TechTuner Software</h4>
@@ -51,7 +21,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="javascript:;" class="">
+                    <a href="{{ route('dashboard-index') }}" class="">
                         <div class="parent-icon"><i class='bx bx-home-alt'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
@@ -133,11 +103,11 @@
                     <ul>
 
                         <li>
-                            <a href="javascript:;"><i class=' bx bx-id-card'></i>All Empolyee</a>
+                            <a href="{{ route('empolyeeList') }}"><i class=' bx bx-id-card'></i>All Empolyee</a>
                         </li>
 
                         <li>
-                            <a href="javascript:;"><i class='bx bx-user-plus '></i>Create Empolyee</a>
+                            <a href="{{ route('addEmpolyee') }}"><i class='bx bx-user-plus '></i>Create Empolyee</a>
                         </li>
 
                     </ul>
@@ -195,7 +165,7 @@
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"><i class="bx bx-grid-alt"></i>
                         </div>
-                        <div class="menu-title">Inventory Reports</div>
+                        <div class="menu-title">Store Reports</div>
                     </a>
                     <ul>
                         <li> <a href="table-basic-table.html"><i class='bx bx-radio-circle'></i>Basic Table</a>
@@ -239,8 +209,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{asset('assets/images/avatars/avatar-1.png')}}" class="msg-avatar"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/avatars/avatar-1.png') }}"
+                                                        class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Daisy Anderson<span
@@ -265,8 +235,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{asset('assets/images/avatars/avatar-2.png')}}" class="msg-avatar"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/avatars/avatar-2.png') }}"
+                                                        class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Althea Cabardo <span
@@ -279,8 +249,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="notify bg-light-success text-success">
-                                                    <img src="{{asset('assets/images/app/outlook.png')}}" width="25"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/app/outlook.png') }}"
+                                                        width="25" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Account Created<span
@@ -304,8 +274,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{asset('assets/images/avatars/avatar-4.png')}}" class="msg-avatar"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/avatars/avatar-4.png') }}"
+                                                        class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Katherine Pechon <span
@@ -331,8 +301,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="notify bg-light-primary">
-                                                    <img src="{{asset('assets/images/app/github.png')}}" width="25"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/app/github.png') }}"
+                                                        width="25" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">New 24 authors<span
@@ -345,8 +315,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{asset('assets/images/avatars/avatar-8.png')}}" class="msg-avatar"
-                                                        alt="user avatar">
+                                                    <img src="{{ asset('assets/images/avatars/avatar-8.png') }}"
+                                                        class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Peter Costanzo <span
@@ -383,8 +353,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/11.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/11.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -402,8 +372,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/02.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/02.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -421,8 +391,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/03.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/03.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -440,8 +410,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/04.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/04.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -459,8 +429,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/05.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/05.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -478,8 +448,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/06.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/06.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -497,8 +467,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/07.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/07.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -516,8 +486,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/08.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/08.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -535,8 +505,8 @@
                                             <div class="gap-3 d-flex align-items-center">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="{{asset('assets/images/products/09.png')}}" class=""
-                                                            alt="product image">
+                                                        <img src="{{ asset('assets/images/products/09.png') }}"
+                                                            class="" alt="product image">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -569,7 +539,8 @@
 
                         <a class="gap-3 d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{asset('assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
+                            <img src="{{ asset('assets/images/avatars/avatar-2.png') }}" class="user-img"
+                                alt="user avatar">
                             <div class="user-info">
                                 <p class="mb-0 user-name">Moshiur Rahman</p>
                                 <p class="mb-0 designattion">moshiur.it@gmail.com</p>
@@ -594,11 +565,11 @@
         </header>
 
         <!--end header -->
-         <!--start page wrapper -->
+        <!--start page wrapper -->
         <div class="page-wrapper">
             <div class="page-content">
                 <!-- start-content -->
-                 @yield('content')
+                @yield('content')
                 <!-- end-content -->
             </div>
         </div>
@@ -615,31 +586,7 @@
     </div>
     <!--end wrapper-->
 
-    <!-- Bootstrap JS -->
-    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-    <!--plugins-->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <script src="{{asset('assets/plugins/chartjs/js/chart.js')}}"></script>
-    <script src="{{asset('assets/js/index.js')}}"></script>
-    <!--app JS-->
-    <script src="{{asset('assets/js/app.js')}}"></script>
-    <script>
-        new PerfectScrollbar(".app-container");
-    </script>
-    <script>
-        let table = new DataTable('#myTable', {
-            "pageLength": 5,
-            "lengthMenu": [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "All"]
-            ]
-        });
-    </script>
+
 </body>
 
 </html>

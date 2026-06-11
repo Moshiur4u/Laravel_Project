@@ -2,11 +2,11 @@
 {{-- <title>Add Empolyee</title> --}}
 @section('content')
     <div class="row">
-        {{--  Here start User Info Update  --}}
-        <div class="col-lg-12">
+        {{--  Here start User Info Add  --}}
+        <div class="col-lg-12 d-flex justify-content-center">
             <div class="card">
-                <div class="card-header">
-                    Edit Empolyee Information.
+                <div class="text-center card-header">
+                    <h4 class="text-secondary">Update Empolyee Info.</h4>
                 </div>
                 <div class="card-body">
                     <form action="#" method="POST">
@@ -39,13 +39,12 @@
                             <label for="imageUpload">Select an image:</label>
                             <input type="file" id="imageUpload" name="profile_pic" accept="image/*">
                         </div>
-                        <div class="mb-3">
-                            <button class="btn btn-info" type="submit"> Update</button>
+                        <div class="mt-5 d-flex justify-content-center">
+                            <button class="btn btn-primary " type="submit"> Update</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        {{--  Here start User Info Update  --}}
     </div>
 @endsection

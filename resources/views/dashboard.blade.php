@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -133,11 +132,11 @@
                     <ul>
 
                         <li>
-                            <a href="javascript:;"><i class=' bx bx-id-card'></i>All Empolyee</a>
+                            <a href="{{ route('empolyeeList') }}"><i class=' bx bx-id-card'></i>All Empolyee</a>
                         </li>
 
                         <li>
-                            <a href="javascript:;"><i class='bx bx-user-plus '></i>Create Empolyee</a>
+                            <a href="{{ route('addEmpolyee') }}"><i class='bx bx-user-plus '></i>Create Empolyee</a>
                         </li>
 
                     </ul>
